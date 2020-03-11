@@ -1,12 +1,12 @@
 # our base image
-FROM alpine:3.11.3
+FROM alpine
 
 # Install python and pip
-RUN apk add --update py3-pip
+RUN apk add --update py-pip
 
 # install Python modules needed by the Python app
-COPY requirements.txt /usr/src/app/
-RUN pip install --no-cache-dir -r /usr/src/app/requirements.txt
+COPY requirements.txt ./
+RUN pip install --no-cache-dir -r requirements.txt
 
 # copy files required for the app to run
 COPY app.py /usr/src/app/
